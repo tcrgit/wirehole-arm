@@ -29,10 +29,10 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Los_Angeles # Change to your timezone
+      - TZ=Europe/Amsterdam # Change to your timezone
       - SERVERPORT=51820
-      #- SERVERURL=my.ddns.net #optional - For use with DDNS (Uncomment to use)
-      - PEERS=1 # How many peers to generate for you (clients)
+      - SERVERURL=wh.obsi.win #optional - For use with DDNS (Uncomment to use)
+      - PEERS=10 # How many peers to generate for you (clients)
       - PEERDNS=10.2.0.100 # Set it to point to pihole
       - INTERNAL_SUBNET=10.6.0.0
       
@@ -62,7 +62,7 @@ services:
       - 127.0.0.1
       - 10.2.0.200 # Points to unbound
     environment:
-      TZ: "America/Los_Angeles"
+      TZ: "Europe/Amsterdam"
       WEBPASSWORD: "" # Blank password - Can be whatever you want.
       ServerIP: 10.2.0.100 # Internal IP of pihole
       DNS1: 10.2.0.200 # Unbound IP
