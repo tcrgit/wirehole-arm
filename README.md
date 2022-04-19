@@ -50,7 +50,7 @@ To get started all you need to do is clone the repository and spin up the contai
 ```bash
 git clone https://github.com/IAmStoxe/wirehole.git
 cd wirehole
-docker-compose up
+docker-compose up -d
 ```
 ### Full Setup
 ```bash
@@ -84,7 +84,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-
 # wirehole
 git clone https://github.com/IAmStoxe/wirehole.git &&
     cd wirehole &&
-    docker-compose up
+    docker-compose up -d
 
 ```
 
