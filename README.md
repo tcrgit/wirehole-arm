@@ -1,5 +1,7 @@
-# ⚠️ ARM version of a wirehole, currently used on an Oracle Cloud instance (ARM) ⚠️
-Can be used in any arm architecture system (VM, RapsberryPi, etc).
+# ⚠️ WireHole-ARM is an ARM version of a WireHole ⚠️
+Currently used on an Oracle Cloud instance (ARM).  
+Can be used in any arm architecture system (VM, RapsberryPi, etc).  
+### The original project can be found at [WireHole](https://github.com/IAmStoxe/wirehole).
 
 ## What is this?
 WireHole is a combination of WireGuard, PiHole, and Unbound in a docker-compose project with the intent of enabling users to quickly and easily create and deploy a personally managed full or split-tunnel WireGuard VPN with ad blocking capabilities (via Pihole), and DNS caching with additional privacy options (via Unbound). 
