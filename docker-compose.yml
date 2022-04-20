@@ -35,6 +35,7 @@ services:
       - PEERS=10 # How many peers to generate for you (clients)
       - PEERDNS=10.2.0.100 # Set it to point to pihole
       - INTERNAL_SUBNET=10.6.0.0
+      - ALLOWEDIPS=10.2.0.0/24 # Split tunnel. Remove/comment if you want full tunnel (or put 0.0.0.0/0)
       
     volumes:
       - ./wireguard:/config
