@@ -9,7 +9,8 @@ networks:
 
 services:
   unbound:
-    image: "mvance/unbound-rpi:latest"
+    image: "mvance/unbound-rpi:latest" # rather than unbound:latest (not the correct arch)
+    # or use "pedantic/unbound:latest" (which supports arm64)
     container_name: unbound
     restart: unless-stopped
     hostname: "unbound"
