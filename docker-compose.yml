@@ -32,7 +32,7 @@ services:
       - PGID=1000
       - TZ=Europe/Amsterdam # Change to your timezone
       - SERVERPORT=51820
-      - SERVERURL=wh.obsi.win #optional - For use with DDNS (Uncomment to use)
+      #- SERVERURL=ddns.example.com #optional - For use with DDNS (Uncomment to use)
       - PEERS=10 # How many peers to generate for you (clients)
       - PEERDNS=10.2.0.100 # Set it to point to pihole
       - INTERNAL_SUBNET=10.6.0.0
