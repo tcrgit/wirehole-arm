@@ -1,4 +1,4 @@
-# renamed compose.yml from docker.yml
+# renamed compose.yml from docker-compose.yml
 # use with podman-compose up -d --force-recreate
 version: "3"
 
