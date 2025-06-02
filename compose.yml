@@ -53,7 +53,7 @@ services:
       - 10.2.0.200 # Points to unbound
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
-      - net.ipv4.conf.all.forwarding=1    # needed for rootless podman
+      - net.ipv4.conf.all.forwarding=1    # needed for rootless podman, preferable to net.ipv4.ip_forward=1 bc of narrower scope
 
     restart: unless-stopped
     networks:
