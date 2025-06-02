@@ -35,7 +35,7 @@ podman exec -it wireguard /app/show-peer #shows peers at any future time
 
 
 ### Explanation: Two fixes for common troubleshooting problems
-(1) To fix various iptables errors where the Wireguard handshake fails in rootless Podman becuase the iptables aren't being set inside the container, add the NET_RAW capability (and also make sure you are sharing the /lib/modules as a volume). Note that this error could also be solved, albeit less securely, by running the container stack as root with sudo, or by adding "privileged: true" to allow iptables commands to be executed.
+(1) To fix various iptables errors where the Wireguard handshake fails in rootless Podman becuase the iptables aren't being set inside the container, add the NET_RAW capability (and also make sure you are sharing the /lib/modules as a volume). Note that this error could also be solved, albeit less securely, by running the container stack as root with sudo, or by adding "privileged: true" to allow the iptables commands to be executed.
 
 (2) To fix forwarding issues into and out of the Wireguard VPN container: add the sysctl directive net.ipv4.conf.all.forwarding=1
 
