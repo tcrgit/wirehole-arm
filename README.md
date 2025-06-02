@@ -22,11 +22,12 @@ add_cap:
   net.ipv4.conf.all.forwarding=1
 ```
 
-### Troubleshooting 
-(1) To fix a iptables error where the Wireguard handshake fails in rootless Podman, add the NET_RAW capability (and also make sure you are sharing the /lib/modules as a volume). Note that this error could also be solved, albeit less securely, by running the container stack as root with sudo, or by adding "privileged: true" to allow iptables commands to be executed.
-(2) To fix forwarding issues into and out of the VPN container: add the sysctl directive net.ipv4.conf.all.forwarding=1
+### Explanation: Two fixes for common troubleshooting problems
+(1) To fix various iptables errors where the Wireguard handshake fails in rootless Podman becuase the iptables aren't being set inside the container, add the NET_RAW capability (and also make sure you are sharing the /lib/modules as a volume). Note that this error could also be solved, albeit less securely, by running the container stack as root with sudo, or by adding "privileged: true" to allow iptables commands to be executed.
 
-See https://www.procustodibus.com/blog/2022/10/wireguard-in-podman/ for insights into why and other troubleshooting re running Wireguard in a rootless Podman
+(2) To fix forwarding issues into and out of the Wireguard VPN container: add the sysctl directive net.ipv4.conf.all.forwarding=1
+
+See https://www.procustodibus.com/blog/2022/10/wireguard-in-podman/ for insights into why, including more examples and more troubleshooting tips for running Wireguard in a rootless Podman
 
 
 ---
