@@ -1,9 +1,9 @@
 
 # ⚠️ Podman-compatible and rootless, this WireHole-ARM is an ARM version of a WireHole ⚠️
 Currently used as a Wirehole on an Oracle Cloud instance (ARM), and with support for running Wireguard in a more secure rootless Podman, instead of a (rootful) Docker.  
-Could be used in any arm architecture system (VM, RaspberryPi, etc).  
-### The original project can be found at [WireHole](https://github.com/IAmStoxe/wirehole).
-### The immediately prior ARM64 fork of that project can be found at https://github.com/LucasPlacentino/wirehole-arm/
+Could be used in any arm architecture system (VM, RaspberryPi, etc).
+#### The original project can be found at [WireHole](https://github.com/IAmStoxe/wirehole).
+#### The immediately prior ARM64 fork of that project can be found at https://github.com/LucasPlacentino/wirehole-arm/
 
 ## What is a "Wirehole"?
 WireHole is a combination of WireGuard, PiHole, and Unbound in a docker-compose project with the intent of enabling users to quickly and easily create and deploy a personally managed full or split-tunnel WireGuard VPN with ad blocking capabilities (via Pihole), and DNS caching with additional privacy options (via Unbound). 
