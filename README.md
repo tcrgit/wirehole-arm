@@ -9,7 +9,7 @@ Could be used in any arm architecture system (VM, RaspberryPi, etc).
 WireHole is a combination of WireGuard, PiHole, and Unbound in a docker-compose project with the intent of enabling users to quickly and easily create and deploy a personally managed full or split-tunnel WireGuard VPN with ad blocking capabilities (via Pihole), and DNS caching with additional privacy options (via Unbound). 
 
 ### Other improvements in this version of Wirehole
-Not only will this compose file work with Podman, but it also uses an unoffical but more frequently updated bot-compilation of Unbound which can be found at docker.io/klutchell/unbound
+Not only will this compose.yml file work with Podman, but it also uses an unoffical but more frequently updated bot-compilation of Unbound which can be found at docker.io/klutchell/unbound
 
 ---
 
@@ -21,6 +21,18 @@ add_cap:
 [sysctl:]
   net.ipv4.conf.all.forwarding=1
 ```
+
+### To run, download or clone with git then
+```
+cd wirehole; #change into directory (or specify it using the -f flag in the podman-compose command)
+
+podman-compose -d --force-recreate #the force-recreate flag is only needed when the containers are already started. Does not regenerate Peers.
+
+podman logs -l #to view peers the first time (including QR image if supported in your terminal)
+
+podman exec -it wireguard /app/show-peer #shows peers at any future time
+```
+
 
 ### Explanation: Two fixes for common troubleshooting problems
 (1) To fix various iptables errors where the Wireguard handshake fails in rootless Podman becuase the iptables aren't being set inside the container, add the NET_RAW capability (and also make sure you are sharing the /lib/modules as a volume). Note that this error could also be solved, albeit less securely, by running the container stack as root with sudo, or by adding "privileged: true" to allow iptables commands to be executed.
