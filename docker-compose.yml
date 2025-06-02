@@ -1,3 +1,5 @@
+# renamed compose.yml from docker.yml
+# use with podman-compose up -d --force-recreate
 version: "3"
 
 networks:
@@ -9,8 +11,9 @@ networks:
 
 services:
   unbound:
-    image: "mvance/unbound-rpi:latest" # rather than unbound:latest (not the correct arch)
+    image: "docker.io/klutchell/unbound:latest" # frequently updated
     # or use "pedantic/unbound:latest" (which supports arm64)
+    # or "mvance/unbound-rpi:latest" # rather than unbound:latest (not the correct arch)
     container_name: unbound
     restart: unless-stopped
     hostname: "unbound"
@@ -27,13 +30,15 @@ services:
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
+      - NET_RAW #needed for rootless Podman
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Amsterdam # Change to your timezone
+      - TZ=Europe/Amsterdam # Change to your VM timezone
       - SERVERPORT=51820
       #- SERVERURL=ddns.example.com #optional - For use with DDNS (Uncomment to use)
       - PEERS=10 # How many peers to generate for you (clients)
+      # PEERS=iphone,ipad,mac,pc,peer5,peer6,peer7,peer8,peer9 # optional: Name your peers at create time
       - PEERDNS=10.2.0.100 # Set it to point to pihole
       - INTERNAL_SUBNET=10.6.0.0
       - ALLOWEDIPS=10.2.0.0/24 # Split tunnel. Remove/comment if you want full tunnel (or put 0.0.0.0/0)
@@ -48,6 +53,7 @@ services:
       - 10.2.0.200 # Points to unbound
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.conf.all.forwarding=1    # needed for rootless podman
 
     restart: unless-stopped
     networks:
@@ -64,7 +70,7 @@ services:
       - 127.0.0.1
       - 10.2.0.200 # Points to unbound
     environment:
-      TZ: "Europe/Amsterdam"
+      TZ: "Europe/Amsterdam" # Change this to the VM timezone
       WEBPASSWORD: "" # Blank password - Can be whatever you want.
       ServerIP: 10.2.0.100 # Internal IP of pihole
       DNS1: 10.2.0.200 # Unbound IP
