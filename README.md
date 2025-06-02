@@ -17,8 +17,8 @@ Not only will this compose.yml file work with Podman, but it also uses an unoffi
 ```
 add_cap:
   NET_RAW
-...
-[sysctl:]
+[...]
+sysctl:
   net.ipv4.conf.all.forwarding=1
 ```
 
